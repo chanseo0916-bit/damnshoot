@@ -1,0 +1,624 @@
+/* ============================================================
+   AMU Layout Styles
+   ============================================================ */
+
+/* ===== App Shell ===== */
+.amu-app-shell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    width: 100%;
+    max-width: 448px;
+    /* mobile-app feel */
+    margin: 0 auto;
+    background: var(--background);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+/* ===== Top Header ===== */
+.amu-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--background);
+}
+
+.amu-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 8px;
+}
+
+.amu-header__logo {
+    font-family: var(--font-logo), "Fredoka", cursive;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--primary), var(--accent-pink), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    animation: pulseGlow 3s ease-in-out infinite;
+    -webkit-animation: none;
+    /* disable box-shadow animation on text */
+}
+
+.amu-header__title {
+    font-family: var(--font-logo), "Fredoka", cursive;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--foreground);
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.amu-header__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: none;
+    border: none;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    position: relative;
+}
+
+.amu-header__btn:hover {
+    background: var(--surface-hover);
+}
+
+.amu-header__badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-pink);
+    border: 2px solid var(--background);
+}
+
+.amu-header__spacer {
+    width: 40px;
+}
+
+/* ===== Main Content ===== */
+.amu-main {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 88px;
+    /* space for bottom nav */
+}
+
+/* ===== Bottom Navigation ===== */
+.amu-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 448px;
+    z-index: 30;
+    background: var(--surface);
+    background: rgba(30, 22, 37, 0.95);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    padding: 8px 20px calc(env(safe-area-inset-bottom, 12px) + 8px);
+}
+
+html:not(.dark) .amu-bottom-nav {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.amu-bottom-nav__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.amu-bottom-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    text-decoration: none;
+    color: var(--foreground-muted);
+    transition: color var(--transition-fast);
+}
+
+.amu-bottom-nav__item:hover {
+    color: var(--primary);
+}
+
+.amu-bottom-nav__item--active {
+    color: var(--primary) !important;
+}
+
+.amu-bottom-nav__icon-wrap {
+    position: relative;
+    padding: 4px;
+}
+
+.amu-bottom-nav__dot {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.amu-bottom-nav__label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* ===== Page Header ===== */
+.ds-page-header {
+    padding: 0 20px;
+    margin-bottom: 24px;
+}
+
+.ds-page-header__title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--foreground);
+    margin: 0 0 6px;
+    letter-spacing: -0.3px;
+}
+
+.ds-page-header__subtitle {
+    font-size: 14px;
+    color: var(--foreground-muted);
+    margin: 0;
+}
+
+/* ===== Auth Layout ===== */
+.ds-auth-layout {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(140, 43, 238, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 60%),
+        var(--background);
+}
+
+.ds-auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 40px 28px;
+    box-shadow: var(--shadow-lg);
+}
+
+.ds-auth-card__header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.ds-auth-card__logo {
+    font-family: var(--font-logo), "Fredoka", cursive;
+    font-size: 48px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+}
+
+.ds-auth-card__title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+
+.ds-auth-card__subtitle {
+    font-size: 14px;
+    color: var(--foreground-muted);
+    margin: 0;
+}
+
+.ds-auth-card__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ds-auth-card__divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--foreground-muted);
+    font-size: 12px;
+    margin: 4px 0;
+}
+
+.ds-auth-card__divider::before,
+.ds-auth-card__divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.ds-auth-card__footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--foreground-muted);
+}
+
+.ds-auth-card__footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.ds-auth-card__footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   AMU Auth Styles (Neon Lime Green Theme)
+   ============================================================ */
+
+.amu-auth-shell {
+    position: relative;
+    min-height: 100dvh;
+    width: 100%;
+    max-width: 448px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #130821;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(140, 244, 37, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 25%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.02) 75%, rgba(255, 255, 255, 0.02)),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.02) 75%, rgba(255, 255, 255, 0.02));
+    background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+    background-position: 0 0, 0 0, 0 0, 30px 30px;
+    overflow-y: auto;
+}
+
+.amu-auth-header {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px 32px;
+}
+
+.amu-auth-logo-wrap {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.amu-auth-logo-glow {
+    position: absolute;
+    inset: -4px;
+    background: rgba(140, 244, 37, 0.3);
+    border-radius: 50%;
+    filter: blur(8px);
+    opacity: 0.75;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+.amu-auth-logo-icon {
+    position: relative;
+    background: #130821;
+    border: 2px solid rgba(140, 244, 37, 0.4);
+    border-radius: 1rem;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(140, 244, 37, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.amu-auth-logo-icon .material-symbols-outlined {
+    font-size: 60px;
+    color: #8cf425;
+}
+
+.amu-auth-title {
+    color: white;
+    font-family: var(--font-display);
+    font-size: 60px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    text-align: center;
+    filter: drop-shadow(0 0 15px rgba(140, 244, 37, 0.5));
+    margin-bottom: 8px;
+}
+
+.amu-auth-subtitle {
+    color: #8cf425;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    transform: rotate(-2deg);
+}
+
+.amu-auth-form-wrap {
+    width: 100%;
+    padding: 0 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Auth Buttons */
+.amu-btn-google {
+    width: 100%;
+    height: 64px;
+    background: white;
+    color: black;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    border: 2px solid #8cf425;
+    box-shadow: 0 0 20px rgba(140, 244, 37, 0.3);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.amu-btn-google:hover {
+    box-shadow: 0 0 30px rgba(140, 244, 37, 0.5);
+    transform: scale(1.01);
+}
+
+.amu-btn-google:active {
+    transform: scale(0.99);
+}
+
+.amu-btn-google::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(140, 244, 37, 0.1);
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.amu-btn-google:hover::before {
+    transform: translateY(0);
+}
+
+.amu-btn-google svg,
+.amu-btn-google span {
+    position: relative;
+    z-index: 10;
+}
+
+.amu-auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+}
+
+.amu-auth-divider::before,
+.amu-auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(148, 163, 184, 0.5);
+    /* slate-400 equivalent */
+}
+
+.amu-auth-divider span {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Auth Inputs */
+.amu-input-label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.amu-input-title {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+    padding-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+.amu-input-label:focus-within .amu-input-title {
+    color: #8cf425;
+}
+
+.amu-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.amu-input-icon {
+    position: absolute;
+    left: 16px;
+    color: #64748b;
+    transition: color 0.3s;
+    font-size: 24px;
+}
+
+.amu-input-label:focus-within .amu-input-icon {
+    color: #8cf425;
+}
+
+.amu-input {
+    width: 100%;
+    height: 56px;
+    padding-left: 48px;
+    padding-right: 16px;
+    border-radius: 12px;
+    background: #1e1035;
+    border: 1px solid #334155;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.amu-input::placeholder {
+    color: #475569;
+}
+
+.amu-input:focus {
+    border-color: #8cf425;
+    box-shadow: 0 0 15px rgba(140, 244, 37, 0.2);
+}
+
+.amu-input-toggle {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+}
+
+.amu-input-toggle:hover {
+    color: #8cf425;
+}
+
+.amu-input-error {
+    color: #ef4444;
+    font-size: 12px;
+    margin: 4px 0 0 8px;
+}
+
+/* Submit Button */
+.amu-btn-submit {
+    margin-top: 8px;
+    width: 100%;
+    height: 56px;
+    background: rgba(140, 244, 37, 0.1);
+    border: 1px solid #8cf425;
+    color: #8cf425;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.amu-btn-submit:hover:not(:disabled) {
+    background: #8cf425;
+    color: #130821;
+}
+
+.amu-btn-submit .material-symbols-outlined {
+    transition: transform 0.3s;
+}
+
+.amu-btn-submit:hover:not(:disabled) .material-symbols-outlined {
+    transform: translateX(4px);
+}
+
+.amu-btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Footer Links */
+.amu-auth-footer {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.amu-auth-link {
+    color: #64748b;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.amu-auth-link:hover {
+    color: #8cf425;
+}
+
+.amu-auth-link-highlight {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: #8cf425;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition: color 0.3s;
+}
+
+.amu-auth-link-highlight:hover {
+    color: #8cf425;
+}
+
+/* ===== Responsive (for desktop viewing, center the app shell) ===== */
+@media (min-width: 449px) {
+    body {
+        background: #06020c;
+    }
+
+    html:not(.dark) body {
+        background: #e8e5ed;
+    }
+
+    .amu-app-shell {
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+    }
+
+    .amu-auth-shell {
+        box-shadow: var(--shadow-lg);
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+    }
+}

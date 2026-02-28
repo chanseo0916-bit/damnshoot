@@ -1,0 +1,923 @@
+/* ============================================================
+   Decision Engine Styles
+   ============================================================ */
+
+/* ===== Decision Hub ===== */
+.decision-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.decision-hub-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.decision-hub-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-light);
+}
+
+.decision-hub-card__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.decision-hub-card__info h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--foreground);
+    margin: 0 0 4px;
+}
+
+.decision-hub-card__info p {
+    font-size: 13px;
+    color: var(--foreground-muted);
+    margin: 0;
+}
+
+/* ===== Shared Decision Layout ===== */
+.decision-page {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.decision-page__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--foreground-muted);
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: color var(--transition-fast);
+}
+
+.decision-page__back:hover {
+    color: var(--foreground);
+}
+
+.decision-page__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+/* ===== Result Card ===== */
+.result-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 24px;
+    background: var(--surface);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    animation: resultPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes resultPop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.result-card__emoji {
+    font-size: 56px;
+    margin-bottom: 12px;
+}
+
+.result-card__label {
+    font-size: 13px;
+    color: var(--foreground-muted);
+    margin: 0 0 4px;
+}
+
+.result-card__name {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
+}
+
+.result-card__actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* ===== Slot Machine (Random) ===== */
+.slot-machine {
+    width: 100%;
+    max-width: 360px;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.slot-machine__strip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.1s linear;
+}
+
+.slot-machine__item {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--foreground);
+    gap: 10px;
+}
+
+.slot-machine__pointer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 8px var(--primary);
+    pointer-events: none;
+}
+
+/* ===== Spin Wheel ===== */
+.spinwheel-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+}
+
+.spinwheel-pointer {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: 28px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.spinwheel-canvas {
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(108, 92, 231, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Dice ===== */
+.dice-container {
+    perspective: 600px;
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+}
+
+.dice-face {
+    width: 120px;
+    height: 120px;
+    background: var(--surface);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--primary);
+    box-shadow: var(--shadow-glow);
+}
+
+.dice-rolling {
+    animation: diceShake 0.15s infinite alternate;
+}
+
+@keyframes diceShake {
+    0% {
+        transform: rotate(-5deg) scale(1.05);
+    }
+
+    100% {
+        transform: rotate(5deg) scale(0.95);
+    }
+}
+
+/* ===== Lottery ===== */
+.lottery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 460px;
+}
+
+.lottery-ticket {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lottery-ticket:hover:not(.lottery-ticket--opened) {
+    border-color: var(--primary);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow);
+}
+
+.lottery-ticket--opened {
+    cursor: default;
+    border-color: var(--border-light);
+    background: var(--surface-hover);
+}
+
+.lottery-ticket--winner {
+    border-color: var(--primary) !important;
+    background: var(--primary-light) !important;
+    animation: resultPop 0.3s ease-out;
+}
+
+.lottery-ticket__content {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--foreground);
+    text-align: center;
+    padding: 6px;
+    word-break: keep-all;
+}
+
+/* ===== Balance Game ===== */
+.balance-container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.balance-card {
+    flex: 1;
+    padding: 40px 20px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 200px;
+}
+
+.balance-card:hover {
+    transform: scale(1.03);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-glow);
+}
+
+.balance-card--selected {
+    border-color: var(--accent) !important;
+    background: var(--accent-light) !important;
+    transform: scale(1.05);
+}
+
+.balance-card__emoji {
+    font-size: 48px;
+}
+
+.balance-card__name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.balance-vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--danger);
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .balance-container {
+        flex-direction: column;
+    }
+
+    .balance-vs {
+        transform: rotate(90deg);
+    }
+
+    .spinwheel-container {
+        width: 260px;
+        height: 260px;
+    }
+}
+
+/* ============================================================
+   AMU Draw Straws / Lottery
+   ============================================================ */
+
+.amu-lottery-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100dvh - 140px);
+    padding: 0 20px 20px;
+    overflow: hidden;
+}
+
+.amu-lottery-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.amu-lottery-bg__shape {
+    position: absolute;
+    opacity: 0.25;
+}
+
+.amu-lottery-bg__star {
+    top: 8%;
+    right: 10%;
+    color: var(--accent-pink);
+}
+
+.amu-lottery-bg__star .material-symbols-outlined {
+    font-size: 48px;
+}
+
+.amu-lottery-bg__circle {
+    bottom: 18%;
+    left: 10%;
+    color: var(--accent-cyan);
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.amu-lottery-bg__circle .material-symbols-outlined {
+    font-size: 40px;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Instruction Bubble */
+.amu-lottery-bubble {
+    position: relative;
+    z-index: 5;
+    display: inline-flex;
+    margin: 16px auto 24px;
+    padding: 10px 24px;
+    background: var(--surface);
+    border: 2px solid var(--primary-light);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.amu-lottery-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 14px;
+    height: 14px;
+    background: var(--surface);
+    border-bottom: 2px solid var(--primary-light);
+    border-right: 2px solid var(--primary-light);
+}
+
+/* Straws Area */
+.amu-straws-area {
+    position: relative;
+    z-index: 3;
+    width: 260px;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 20px auto 0;
+}
+
+.amu-straws-container {
+    position: absolute;
+    bottom: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 4px;
+    z-index: 1;
+}
+
+/* Individual Straw */
+.amu-straw {
+    width: 22px;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform-origin: bottom center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.amu-straw:hover:not(.amu-straw--pulled):not(.amu-straw--dimmed) {
+    transform: translateY(-40px) !important;
+    z-index: 20;
+}
+
+.amu-straw--pulled {
+    transform: translateY(-100px) !important;
+    z-index: 20;
+    animation: pullUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.amu-straw--dimmed {
+    opacity: 0.4;
+    cursor: default;
+}
+
+@keyframes pullUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-120px) scale(1.1);
+    }
+}
+
+/* Shuffle Shake Animations */
+.amu-straw--shake {
+    animation: strawShake 0.3s ease-in-out infinite alternate !important;
+}
+
+@keyframes strawShake {
+    0% {
+        transform: translateX(-3px) rotate(-2deg);
+    }
+
+    25% {
+        transform: translateX(3px) rotate(2deg);
+    }
+
+    50% {
+        transform: translateX(-2px) rotate(-1deg);
+    }
+
+    75% {
+        transform: translateX(2px) rotate(1deg);
+    }
+
+    100% {
+        transform: translateX(-3px) rotate(-2deg);
+    }
+}
+
+.amu-straws--shuffling {
+    animation: containerShake 0.15s ease-in-out infinite;
+}
+
+@keyframes containerShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+.amu-straw-box--shake {
+    animation: boxWobble 0.2s ease-in-out infinite;
+}
+
+@keyframes boxWobble {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-1.5deg);
+    }
+
+    75% {
+        transform: rotate(1.5deg);
+    }
+}
+
+.amu-icon-spin {
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Straw Patterns */
+.amu-straw__pattern {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+.amu-straw__pattern--stripes {
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 8px,
+            rgba(255, 255, 255, 0.2) 8px, rgba(255, 255, 255, 0.2) 16px);
+}
+
+.amu-straw__pattern--line {
+    background: transparent;
+}
+
+.amu-straw__pattern--line::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.amu-straw__pattern--dots {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 2px, transparent 2.5px);
+    background-size: 8px 8px;
+}
+
+.amu-straw__pattern--checks {
+    background: linear-gradient(90deg, transparent 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 5px 5px;
+}
+
+.amu-straw__pattern--bands {
+    background: transparent;
+}
+
+/* Wobbly Box */
+.amu-straw-box {
+    position: relative;
+    z-index: 5;
+    width: 220px;
+    height: 180px;
+    background: linear-gradient(135deg, var(--surface), #000);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    box-shadow:
+        inset 8px 8px 16px rgba(0, 0, 0, 0.3),
+        4px 4px 12px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(140, 43, 238, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+
+.amu-straw-box:hover {
+    transform: scale(1.03);
+}
+
+.amu-straw-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    width: 24px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    transform: skewX(12deg);
+    filter: blur(2px);
+}
+
+.amu-straw-box::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    opacity: 0.15;
+    border-radius: 50%;
+    filter: blur(20px);
+}
+
+.amu-straw-box__inner {
+    text-align: center;
+    transform: rotate(-3deg);
+    z-index: 1;
+}
+
+.amu-straw-box__logo {
+    font-family: var(--font-logo), "Fredoka", cursive;
+    font-size: 52px;
+    font-weight: 700;
+    background: linear-gradient(180deg, #ffffff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.amu-straw-box__line {
+    width: 48px;
+    height: 3px;
+    background: var(--accent-pink);
+    border-radius: var(--radius-full);
+    margin: 4px auto 0;
+}
+
+/* Result */
+.amu-lottery-result {
+    z-index: 5;
+    text-align: center;
+    margin-top: 24px;
+    padding: 24px;
+    background: var(--surface);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-glow);
+    width: 100%;
+    max-width: 280px;
+}
+
+.amu-lottery-result__emoji {
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.amu-lottery-result__label {
+    font-size: 13px;
+    color: var(--foreground-muted);
+    margin: 0 0 4px;
+}
+
+.amu-lottery-result__name {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* Bottom Shuffle Button */
+.amu-lottery-bottom {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 400px;
+    z-index: 20;
+}
+
+.amu-lottery-shuffle-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: var(--radius-xl);
+    background: rgba(30, 22, 37, 0.5);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--foreground);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all var(--transition-fast);
+}
+
+html:not(.dark) .amu-lottery-shuffle-btn {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.amu-lottery-shuffle-btn:hover {
+    background: rgba(30, 22, 37, 0.7);
+}
+
+.amu-lottery-shuffle-btn:active {
+    transform: scale(0.96);
+}
+
+.amu-lottery-shuffle-btn--active {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-glow);
+}
+
+.amu-lottery-shuffle-btn:disabled {
+    opacity: 0.8;
+    cursor: wait;
+}
+
+/* Hint text */
+.amu-lottery-hint {
+    text-align: center;
+    margin-top: 16px;
+    z-index: 5;
+}
+
+.amu-lottery-hint p {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--foreground-muted);
+    margin: 0 0 12px;
+    min-height: 20px;
+}
+
+/* Dots */
+.amu-lottery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    z-index: 5;
+}
+
+.amu-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.amu-dot--pink {
+    background: var(--accent-pink);
+}
+
+.amu-dot--cyan {
+    background: var(--accent-cyan);
+    animation-delay: 0.3s;
+}
+
+.amu-dot--primary {
+    background: var(--primary);
+    animation-delay: 0.6s;
+}
+
+/* Loading / Empty States */
+.amu-lottery-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 80px 20px;
+    color: var(--foreground-muted);
+    z-index: 5;
+}
+
+.amu-lottery-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 60px 20px;
+    text-align: center;
+    z-index: 5;
+}
+
+.amu-lottery-empty h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--foreground);
+    margin: 0;
+}
+
+.amu-lottery-empty p {
+    font-size: 14px;
+    color: var(--foreground-muted);
+    margin: 0;
+}
+
+/* ============================================================
+   Light Mode Overrides for Decision Pages
+   ============================================================ */
+
+/* Straw Box - 라이트모드에서도 진한 배경 유지 */
+html:not(.dark) .amu-straw-box {
+    background: linear-gradient(135deg, #2d1a45, #1a0b2e);
+    border-color: rgba(140, 43, 238, 0.3);
+}
+
+/* Result card - 결과 카드 배경 진하게 */
+html:not(.dark) .amu-lottery-result {
+    background: #f0ebf5;
+    border-color: var(--primary);
+}
+
+html:not(.dark) .result-card {
+    background: #f0ebf5;
+    border-color: var(--primary);
+}
+
+/* Lottery bubble - 안내 말풍선 */
+html:not(.dark) .amu-lottery-bubble {
+    background: #f0ebf5;
+    border-color: rgba(118, 24, 201, 0.25);
+}
+
+html:not(.dark) .amu-lottery-bubble::after {
+    background: #f0ebf5;
+    border-color: rgba(118, 24, 201, 0.25);
+}
+
+/* 카드/서피스 요소들 라이트모드 대비 강화 */
+html:not(.dark) .ds-card--default {
+    background: #f5f1fa;
+    border-color: #c8bdd6;
+}
+
+/* Dice face */
+html:not(.dark) .dice-face {
+    background: #f0ebf5;
+}
+
+/* Balance card */
+html:not(.dark) .balance-card {
+    background: #f0ebf5;
+    border-color: #c8bdd6;
+}

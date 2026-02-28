@@ -1,0 +1,201 @@
+/* ============================================================
+   Food Component Styles
+   ============================================================ */
+
+/* ===== FoodCard ===== */
+.food-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.food-card:hover {
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.food-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.food-card__emoji {
+    font-size: 28px;
+}
+
+.food-card__badges {
+    display: flex;
+    gap: 6px;
+}
+
+.food-card__name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--foreground);
+    margin: 0;
+}
+
+.food-card__desc {
+    font-size: 13px;
+    color: var(--foreground-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.food-card__actions {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.food-card__action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--foreground-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.food-card__action-btn:hover {
+    background: var(--surface-hover);
+    color: var(--foreground);
+    border-color: var(--border-light);
+}
+
+.food-card__action-btn--active {
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+.food-card__action-btn--active:hover {
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.food-card__action-btn--danger:hover {
+    color: var(--danger);
+    border-color: var(--danger);
+    background: var(--danger-light);
+}
+
+/* ===== CategoryFilter ===== */
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.category-filter__item {
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--foreground-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.category-filter__item:hover {
+    color: var(--foreground);
+    border-color: var(--border-light);
+}
+
+.category-filter__item--active {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    background: var(--primary-light) !important;
+}
+
+/* ===== Food Grid ===== */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+/* ===== Food Page Header ===== */
+.food-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.empty-state__icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.empty-state__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--foreground);
+    margin: 0 0 6px;
+}
+
+.empty-state__desc {
+    font-size: 14px;
+    color: var(--foreground-muted);
+    margin: 0 0 20px;
+}
+
+/* ===== Search Bar ===== */
+.food-search {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+
+.food-search__input {
+    flex: 1;
+    max-width: 320px;
+}
+
+@media (max-width: 640px) {
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .food-page-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .food-search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .food-search__input {
+        max-width: none;
+    }
+}
